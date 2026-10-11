@@ -1,0 +1,1 @@
+ALTER TABLE `product_catalog` ADD `unitsPerPackage` int DEFAULT 1 NOT NULL;

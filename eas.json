@@ -1,0 +1,38 @@
+{
+  "cli": {
+    "version": ">= 16.0.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development"
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": { "buildType": "apk" },
+      "channel": "preview",
+      "env": [
+        { "EXPO_PUBLIC_SUPABASE_URL": { "secret": "EXPO_PUBLIC_SUPABASE_URL" } },
+        { "EXPO_PUBLIC_SUPABASE_ANON_KEY": { "secret": "EXPO_PUBLIC_SUPABASE_ANON_KEY" } },
+        { "EXPO_PUBLIC_API_BASE_URL": { "secret": "EXPO_PUBLIC_API_BASE_URL" } },
+        { "EXPO_PUBLIC_SUPABASE_TABLE": "pharmacy_backups" }
+      ]
+    },
+    "production": {
+      "autoIncrement": true,
+      "android": { "buildType": "app-bundle" },
+      "channel": "production",
+      "env": [
+        { "EXPO_PUBLIC_SUPABASE_URL": { "secret": "EXPO_PUBLIC_SUPABASE_URL" } },
+        { "EXPO_PUBLIC_SUPABASE_ANON_KEY": { "secret": "EXPO_PUBLIC_SUPABASE_ANON_KEY" } },
+        { "EXPO_PUBLIC_API_BASE_URL": { "secret": "EXPO_PUBLIC_API_BASE_URL" } },
+        { "EXPO_PUBLIC_SUPABASE_TABLE": "pharmacy_backups" }
+      ]
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
