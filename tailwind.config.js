@@ -1,33 +1,44 @@
-const { themeColors } = require("./theme.config");
-const plugin = require("tailwindcss/plugin");
-
-const tailwindColors = Object.fromEntries(
-  Object.entries(themeColors).map(([name, swatch]) => [
-    name,
-    {
-      DEFAULT: `var(--color-${name})`,
-      light: swatch.light,
-      dark: swatch.dark,
-    },
-  ]),
-);
-
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: "class",
-  // Scan all component and app files for Tailwind classes
-  content: ["./app/**/*.{js,ts,tsx}", "./components/**/*.{js,ts,tsx}", "./lib/**/*.{js,ts,tsx}", "./hooks/**/*.{js,ts,tsx}"],
-
-  presets: [require("nativewind/preset")],
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
-      colors: tailwindColors,
+      colors: {
+        pharmacy: {
+          primary: '#1FA47A',
+          primaryDark: '#15906B',
+          deep: '#0D2420',
+          mint: '#E5F5EF',
+          softMint: '#E9F8F1',
+          background: '#F7F7F5',
+          surface: '#FFFFFF',
+          ink: '#0D2420',
+          muted: '#7A817E',
+          border: '#ECECE8',
+          warning: '#E35B2D',
+          danger: '#C64536',
+          softWarning: '#FDE5D8',
+          softDanger: '#FCE8E2',
+          peach: '#FCE4D7',
+          aqua: '#CFF2E7',
+        },
+      },
+      fontFamily: {
+        sans: [
+          'Cairo',
+          'Tajawal',
+          'system-ui',
+          '-apple-system',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'sans-serif',
+        ],
+      },
     },
   },
-  plugins: [
-    plugin(({ addVariant }) => {
-      addVariant("light", ':root:not([data-theme="dark"]) &');
-      addVariant("dark", ':root[data-theme="dark"] &');
-    }),
-  ],
+  plugins: [],
 };
